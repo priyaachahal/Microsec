@@ -1,0 +1,41 @@
+1.	Create a script that recursively downloads a given webpage and finds all hyperlink in that webpage. It should then explore all the hyperlinks and 
+carry doing that in a recursive way. In each of this recursive crawling, it finds all the appearance of the given search word and displays them.
+Create the script that takes in parameters while execution in the format:
+Format:   ./script.sh “website_address” “search_word”
+Example: ./script.sh www.usec.io Ninja
+
+wget -nd -r -l1 -P /save/location -A jpeg,jpg http://www.example.com/products
+
+-nd prevents the creation of a directory hierarchy (i.e. no directories).
+-r enables recursive retrieval. See Recursive Download for more information.
+-l1 Specify recursion maximum depth level. 1 for just this directory in your case it's products.
+-P sets the directory prefix where all files and directories are saved to.
+-A sets a whitelist for retrieving only certain file types. Strings and patterns are accepted, and both can be used in a comma separated list (as seen above). See Types of Files for more information.
+
+1. recursive download the webpage and stores all hyperlink in file
+2. Go thru saved file and search for a word and displays it.
+
+webaddress as input
+search word as input
+
+
+mkdir everydaylinuxuser
+cd everydaylinuxuser
+wget www.everydaylinuxuser.com
+
+
+To output information from the wget command to a log file use the following command:
+
+wget -o /path/to/mylogfile www.everydaylinuxuser.com
+
+
+
+wget http://aligajani.com -O - 2>/dev/null |     grep -oP 'href="\Khttp:.+?"' | sed 's/"//' | grep -v facebook > file.txt
+That creates a file called file.txt with the following contents:
+
+http://www.linkedin.com/pub/ali-ayaz-gajani/17/136/799
+http://www.quora.com/Ali-Gajani
+http://www.mrgeek.me/
+http://twitter.com/aligajani
+http://www.mrgeek.me
+http://aligajani.com
